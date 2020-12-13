@@ -1,6 +1,6 @@
 from aoc20191217a import camera
 
-from cpu import cpu
+from cpu import cpu, read, write
 
 
 def find_path(screen):
@@ -72,13 +72,9 @@ def aoc(data):
         for prog in find_short(find_path(camera(data)))
     ]
     c = cpu("2" + data[1:])
+    s, _ = read(c)
+    print(s)
     for prog in progs:
-        while next(c):
-            pass
-        [c.send(ord(s)) for s in prog]
-    try:
-        while True:
-            last = next(c)
-    except:
-        pass
-    return last
+        s, last = write(c, prog)
+        print(s)
+    return last[-1]

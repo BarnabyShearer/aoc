@@ -1,14 +1,8 @@
-from cpu import cpu
+from cpu import cpu, read
 
 
 def camera(data):
-    c = cpu(data)
-    output = ""
-    try:
-        while True:
-            output += chr(next(c))
-    except:
-        pass
+    output, _ = read(cpu(data))
     return output
 
 

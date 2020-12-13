@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#! /usr/bin/env python3.8
 
 import os
 import sys
@@ -63,7 +63,7 @@ def step(id, data):
     while True:
         try:
             input("[Continue]")
-            new_py(f"{id}.py", [] if id[-1] == "a" else [f"{id[:-1]}b"])
+            new_py(f"{id}.py", [] if id[-1] == "a" else [f"{id[:-1]}a"])
             os.system(f"{os.environ['EDITOR']} {id}.py")
             answer(id, data)
             break

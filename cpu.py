@@ -65,3 +65,34 @@ def cpu(data, input=[]):
             pc += 2
         else:
             raise Exception(data[pc - 8 : pc])
+
+
+def read(c):
+    string_output = ""
+    binary_output = []
+    try:
+        t = next(c)
+        while t is not None:
+            if t < 128:
+                string_output += chr(t)
+            else:
+                binary_output.append(t)
+            t = next(c)
+    except StopIteration:
+        pass
+    return string_output, binary_output
+
+
+def write(c, input):
+    string_output = ""
+    binary_output = []
+    for a in input:
+        string_output += a
+        t = c.send(ord(a))
+        if t is not None:
+            if t < 128:
+                string_output += chr(t)
+            else:
+                binary_output.append(t)
+    a, b = read(c)
+    return string_output + a, binary_output + b
