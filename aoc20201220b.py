@@ -75,11 +75,6 @@ def aoc(data):
     miny = min([y for x, y in photo.keys()])
     maxy = max([y for x, y in photo.keys()])
 
-    for y in range(miny, maxy + 1):
-        for x in range(minx, maxx + 1):
-            print(f"{photo.get((x, y), (0,0))[0]:6}", end="")
-        print()
-
     fulltiles = dict(parse(data))
 
     fullphoto = []
@@ -91,20 +86,20 @@ def aoc(data):
                 full = fulltiles[photo[(x, y)][0]]
                 fullphoto[-1] += tuple(optionsfull(full)[rot])[i][1:9]
 
-    fullphoto = rotfull(rotfull(rotfull(fullphoto)))
-
     ness = ("                  # ", "#    ##    ##    ###", " #  #  #  #  #  #   ")
 
-    total = 0
-    for y in range(len(fullphoto) - 2):
-        for x in range(len(fullphoto[0]) - 19):
-            for yy, line in enumerate(ness):
-                for xx, c in enumerate(line):
-                    if c == "#" and fullphoto[y + yy][x + xx] != "#":
-                        break
+    for fullphoto in optionsfull(fullphoto):
+        total = 0
+        for y in range(len(fullphoto) - 2):
+            for x in range(len(fullphoto[0]) - 19):
+                for yy, line in enumerate(ness):
+                    for xx, c in enumerate(line):
+                        if c == "#" and fullphoto[y + yy][x + xx] != "#":
+                            break
+                    else:
+                        continue
+                    break
                 else:
-                    continue
-                break
-            else:
-                total += 1
-    return "".join(fullphoto).count("#") - "".join(ness).count("#") * total
+                    total += 1
+        if total:
+            return "".join(fullphoto).count("#") - "".join(ness).count("#") * total
