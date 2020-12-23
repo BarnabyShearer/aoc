@@ -1,6 +1,3 @@
-from aoc20191222a import shuffle
-
-
 def aoc(data):
     length = 119315717514047
     it = 101741582076661
