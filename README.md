@@ -1,6 +1,6 @@
 # aoc
 
-[https://adventofcode.com/]
+[adventofcode.com/](https://adventofcode.com/)
 
 My Advent of Code.
 
