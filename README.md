@@ -4,4 +4,3 @@
 
 My Advent of Code.
 
-
