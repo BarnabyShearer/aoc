@@ -18,6 +18,6 @@ def aoc(data):
         if (i + 1) % w == 0:
             continue
         if c:
-            total += 2 ** v
+            total += 2**v
         v += 1
     return total

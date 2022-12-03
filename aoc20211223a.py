@@ -29,7 +29,7 @@ def parse(data):
 
 
 def score(a, h, x, y):
-    return (10 ** a) * (MOVES[x][h] + y)
+    return (10**a) * (MOVES[x][h] + y)
 
 
 def drop(data, h, x):

@@ -15,4 +15,4 @@ def most_common(data):
 
 def aoc(data):
     gamma = most_common(parse(data))
-    return gamma * (gamma ^ (2 ** 12 - 1))
+    return gamma * (gamma ^ (2**12 - 1))
