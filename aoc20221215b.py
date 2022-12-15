@@ -3,10 +3,7 @@ from aoc20221215a import *
 
 def aoc(data, limit=4000000):
     nope = defaultdict(lambda: set())
-    nopenope = defaultdict(lambda: set())
     for x, y, xx, yy in parse(data):
-        nopenope[y].add(x)
-        nopenope[yy].add(xx)
         r = abs(xx - x) + abs(yy - y)
         for yyy in range(y - r + 1, y + r):
             rx = r - abs(yyy - y)
